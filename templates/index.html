@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% import "bootstrap/wtf.html" as wtf %}
+{{ form.csrf_token }}
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+</head>
+<body>
+        <h1>Todo List App</h1>
+        <h2>With Python Flask and SQALCHEMY</h2>
+        {{ wtf.quick_form(form, novalidate=True) }}
+        {% for todo in todos %}
+        <ul>
+            <li>{{ todo.todo }}
+                <a href="{{ url_for('delete', todo_id=todo.id) }}" >Delete</a>
+            </li>
+        </ul>
+        {% endfor %}
+        <p> &copy; John Malek, {{year}} </p>
+</body>
+</html>
